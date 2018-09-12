@@ -17,7 +17,7 @@ const HomeComponent = ({ onPressBack }) => (
   <Container>
     <Header>
       <Left>
-        <Button hasText transparent onPress={onPressBack}>
+        <Button hasText transparent onPress={onPressBack} testID="back_button">
           <Text>Back</Text>
         </Button>
       </Left>

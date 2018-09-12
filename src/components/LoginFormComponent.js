@@ -6,14 +6,14 @@ const LoginFormComponent = ({ onPressLogin }) => (
   <Form>
     <Item floatingLabel>
       <Label>Username</Label>
-      <Input />
+      <Input testID="username_input" />
     </Item>
     <Item floatingLabel last>
       <Label>Password</Label>
-      <Input />
+      <Input testID="password_input" />
     </Item>
     <Content padder>
-      <Button block onPress={onPressLogin}>
+      <Button block onPress={onPressLogin} testID="login_button">
         <Text>Login</Text>
       </Button>
     </Content>
