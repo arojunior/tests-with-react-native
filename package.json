@@ -7,22 +7,41 @@
     "test": "jest"
   },
   "dependencies": {
+    "formik": "^1.2.0",
     "native-base": "^2.8.0",
     "prop-types": "^15.6.2",
-    "react": "16.4.1",
-    "react-native": "0.56.0",
+    "react": "16.5.0",
+    "react-native": "0.56.1",
     "react-navigation": "^2.13.0",
-    "recompose": "^0.30.0"
+    "recompose": "^0.30.0",
+    "yup": "^0.26.5"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.1",
     "babel-jest": "23.4.2",
-    "babel-preset-react-native": "^5",
+    "babel-preset-react-native": "^5.0.0",
     "detox": "^9.0.1",
-    "jest": "23.5.0",
+    "enzyme": "^3.6.0",
+    "enzyme-adapter-react-16": "^1.5.0",
+    "jest": "23.6.0",
+    "jsdom": "^12.0.0",
+    "jsdom-global": "^3.0.2",
+    "react-dom": "^16.5.0",
     "react-test-renderer": "16.4.1"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "react-native",
+    "transform": {
+      "^.+\\.js$": "<rootDir>/node_modules/react-native/jest/preprocessor.js"
+    },
+    "setupTestFrameworkScriptFile": "<rootDir>src/config/enzyme.setup.js",
+    "transformIgnorePatterns": [
+      "node_modules/(?!react-native|native-base|react-navigation)"
+    ],
+    "testMatch": [
+      "<rootDir>/src/**/__tests__/**/*.js?(x)",
+      "<rootDir>/src/**/?(*.)(test).js?(x)"
+    ]
   },
   "detox": {
     "configurations": {
@@ -34,6 +53,6 @@
       }
     },
     "test-runner": "jest",
-    "runner-config": "e2e/config.json"    
+    "runner-config": "e2e/config.json"
   }
 }

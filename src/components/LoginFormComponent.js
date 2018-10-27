@@ -2,18 +2,36 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Content, Form, Item, Input, Label, Button, Text } from 'native-base';
 
-const LoginFormComponent = ({ onPressLogin }) => (
+const LoginFormComponent = ({ handleSubmit, handleChange, errors }) => (
   <Form>
-    <Item floatingLabel>
+    <Item floatingLabel error={!!errors.username}>
       <Label>Username</Label>
-      <Input testID="username_input" />
+      <Input onChangeText={handleChange(`username`)} testID="username_input" />
     </Item>
-    <Item floatingLabel last>
+    {errors.username && (
+      <Item>
+        <Text>{errors.username}</Text>
+      </Item>
+    )}
+    <Item floatingLabel last error={!!errors.password}>
       <Label>Password</Label>
-      <Input testID="password_input" />
+      <Input
+        secureTextEntry
+        onChangeText={handleChange(`password`)}
+        testID="password_input"
+      />
     </Item>
+    {errors.password && (
+      <Item>
+        <Text>{errors.password}</Text>
+      </Item>
+    )}
     <Content padder>
-      <Button block onPress={onPressLogin} testID="login_button">
+      <Button
+        block
+        onPress={handleSubmit}
+        testID="login_button"
+      >
         <Text>Login</Text>
       </Button>
     </Content>
@@ -21,7 +39,7 @@ const LoginFormComponent = ({ onPressLogin }) => (
 );
 
 LoginFormComponent.propTypes = {
-  onPressLogin: PropTypes.func.isRequired
+  handleSubmit: PropTypes.func.isRequired
 };
 
 export default LoginFormComponent;

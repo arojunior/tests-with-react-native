@@ -16,3 +16,9 @@ Also, sometimes the tests just crash with messages like "detox[5438] ERROR: [exe
 detox build
 detox test
 ```
+
+### with enzyme
+
+```sh
+yarn test
+```
